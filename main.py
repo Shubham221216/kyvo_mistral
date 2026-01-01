@@ -36,3 +36,7 @@ def health_check():
 @app.get("/results")
 def get_results():
     return {"results":" Sample results from KyvoEngine"}
+
+@app.get("/")
+def read_root():
+    return {"Hello": "World"}
