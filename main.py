@@ -10,7 +10,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "https://kyvo-mistral.vercel.app/docs"
+        "https://kyvo-web.vercel.app"
         ],
     allow_credentials=True,
     allow_methods=["*"],
