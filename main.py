@@ -10,7 +10,8 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "http://localhost:5173",
-        "https://kyvo-web.vercel.app"
+        "https://kyvo-web.vercel.app",
+        "http://localhost:4173"
         ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -28,6 +29,34 @@ class QueryRequest(BaseModel):
 @app.post("/recommend")
 def recommend(req: QueryRequest):
     return engine.run(req.query)
+
+@app.get("/api/suggestions")
+def get_suggestions():
+    return {
+        "items": [
+            '7200-B-XL-JP',
+            '7201-B-XL-JP',
+            '7202-B-XL-JP',
+            'Angular contact ball bearing',
+            'Angular contact bearing 40° contact angle',
+            'High speed bearing for spindle',
+            'Bearing with 10mm bore',
+            'Bearing with 12mm bore',
+            'Bearing with 15mm bore',
+            'Bearing with 30mm outer diameter',
+            'Bearing with 32mm outer diameter',
+            'Bearing with 35mm outer diameter',
+            'SKF angular contact bearing',
+            'Schaeffler angular contact bearing',
+            'NSK angular contact bearing',
+            'FAG angular contact bearing',
+            'High limiting speed grease bearing',
+            'Compare dynamic load ratings',
+            'Bearing for low friction application',
+            'Bearing for compact assemblies',
+        ]
+    }
+
 
 @app.get("/api/api-health")
 def health_check():
