@@ -13,7 +13,6 @@ app.add_middleware(
         "https://kyvo-web.vercel.app",
         "http://localhost:4173"
         ],
-    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
