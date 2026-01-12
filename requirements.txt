@@ -4,4 +4,4 @@ pydantic
 supabase
 mistralai
 python-dotenv
-# groq  # Uncomment this if you decide to use Groq later
+groq  # Uncomment this if you decide to use Groq later
