@@ -266,11 +266,23 @@ from mistralai import Mistral
 # from groq import Groq
 from app.supabase_client import supabase
 from app.settings import MISTRAL_API_KEY, ENTITY_EXTRACT_SYSTEM_PROMPT
+from groq import Groq
+
+
+client = Groq(api_key=MISTRAL_API_KEY)
+
+response = client.chat.completions.create(
+    model="llama-3.1-8b-instant",
+    messages=[
+        {"role": "user", "content": "Hello"}
+    ]
+)
+
 
 
 class KyvoEngine:
     def __init__(self):
-        self.mistral_client = Mistral(api_key=MISTRAL_API_KEY)
+        self.mistral_client = Groq(api_key=MISTRAL_API_KEY)
 
     # --------------------------------------------------
     # Utilities
@@ -289,8 +301,8 @@ class KyvoEngine:
     # Entity extraction
     # --------------------------------------------------
     def extract_entities(self, user_query: str) -> Dict[str, Any]:
-        resp = self.mistral_client.chat.complete(
-            model="mistral-medium-latest",
+        resp = self.mistral_client.chat.completions.create(
+            model="llama-3.1-8b-instant",
             messages=[
                 {"role": "system", "content": ENTITY_EXTRACT_SYSTEM_PROMPT},
                 {"role": "user", "content": user_query},
